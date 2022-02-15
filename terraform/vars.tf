@@ -6,6 +6,8 @@ locals {
   is_flexible_instance_shape = contains(local.compute_flexible_shapes, local.instance_shape)
 }
 
+# region
+variable region {}
 
 # compartment
 variable compartment_id {}
