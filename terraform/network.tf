@@ -3,7 +3,7 @@
 resource "oci_core_vcn" vcn {
     compartment_id = var.compartment_id
     display_name = var.vcn_display_name
-    dns_label = local.vcn_dns_label
+    dns_label = var.vcn_dns_label
     cidr_blocks = var.vcn_cidr_blocks
 
     defined_tags = null
@@ -76,6 +76,12 @@ resource "oci_core_security_list" web_sec_list {
             min = "5000"
         }
     }
+
+
+    egress_security_rules {
+        destination = "0.0.0.0/0"
+        protocol = "6"  # TCP
+    }
 }
 
 # internet gateway
@@ -113,14 +119,13 @@ resource "oci_core_route_table" rt {
 # todo: use bastion and load balancer with private subnet
 resource "oci_core_subnet" subnet {
 
-    cidr_block = var.subnet_cidr_block
+    cidr_block = cidrsubnet(var.vcn_cidr_blocks, 8, 0)
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.vcn.id
 
     display_name = var.subnet_display_name
     dns_label = var.subnet_dns_label
 
-    availability_domain = var.subnet_availability_domain
     prohibit_public_ip_on_vnic = var.subnet_prohibit_public_ip_on_vnic
     route_table_id = oci_core_route_table.rt.id
     security_list_ids = oci_core_security_list.web_sec_list.id

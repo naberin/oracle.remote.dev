@@ -1,6 +1,6 @@
 # List all Oracle Linux compute instance images
 data "oci_core_images" instanceOCID {
-  compartment_id           = var.compartment_ocid
+  compartment_id           = var.compartment_id
   operating_system         = var.instance_os
   operating_system_version = var.linux_os_version
   shape                    = var.instance_shape
@@ -14,5 +14,5 @@ data "oci_core_images" instanceOCID {
 
 # Find all Availability Domains available in the tenancy
 data "oci_identity_availability_domains" ADs {
-  compartment_id = var.compartment_ocid
+  compartment_id           = var.compartment_id
 }

@@ -1,7 +1,7 @@
 # Create Work VM
 resource "oci_core_instance" compute {
   availability_domain = local.availability_domain_name
-  compartment_id      = var.compartment_ocid
+  compartment_id      = var.compartment_id
   display_name        = "work-vm"
   shape               = local.instance_shape
 
@@ -36,7 +36,7 @@ resource "oci_core_instance" compute {
 
 # Retrieve created VNIC with Compute
 data "oci_core_vnic_attachments" attached_vnic {
-  compartment_id      = var.compartment_ocid
+  compartment_id      = var.compartment_id
   availability_domain = local.availability_domain_name
   instance_id         = oci_core_instance.compute.id
 }
@@ -53,8 +53,8 @@ data "oci_core_private_ips" compute_private_ip {
 
 # Create Reserved Public IP with the above
   resource "oci_core_public_ip" compute_public_ip {
-  compartment_id = var.compartment_ocid
-  display_name   = "work-vm-public-ip"
-  lifetime       = "RESERVED"
-  private_ip_id  = data.oci_core_private_ips.compute_private_ip.private_ips[0]["id"]
+  compartment_id      = var.compartment_id
+  display_name        = "work-vm-public-ip"
+  lifetime            = "RESERVED"
+  private_ip_id       = data.oci_core_private_ips.compute_private_ip.private_ips[0]["id"]
 }
