@@ -16,7 +16,10 @@ users:
 # update package
 package_update: true
 
-# install docker, git
+# install docker
+# install git
+# install apache httpd
+# install oci cli
 packages:
  - docker-engine
  - docker-compose
@@ -24,6 +27,9 @@ packages:
  - httpd
  - python36-oci-cli
 
+# run and enable docker
+# run and enable httpd
+# open firewall-cmd ports to 80, 5000
 runcmd:
   - [ systemctl, daemon-reload ]
   - [ systemctl, enable, docker.service ]
