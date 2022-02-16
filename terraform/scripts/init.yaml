@@ -20,10 +20,18 @@ package_update: true
 packages:
  - docker-engine
  - docker-compose
- - git-all
+ - git
+ - httpd
+ - python36-oci-cli
 
 runcmd:
   - [ systemctl, daemon-reload ]
   - [ systemctl, enable, docker.service ]
   - [ systemctl, start, --no-block, docker.service ]
   - [ touch, /tmp/cloud-init-complete ]
+  - [ systemctl, start, httpd ]
+  - [ systemctl, enable, httpd.service ]
+  - [ firewall-cmd, --add-service=http, --permanent ]
+  - [ firewall-cmd, --zone=public, --permanent, --add-port=5000/tcp ]
+  - [ firewall-cmd, --zone=public, --permanent, --add-port=80/tcp ]
+  - [ firewall-cmd, --reload ]

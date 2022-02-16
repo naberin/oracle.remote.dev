@@ -51,7 +51,7 @@ variable vcn_display_name {
 variable vcn_dns_label {
   default       = "workvmvcn"
 }
-variable vcn_cidr_blocks {
+variable vcn_cidr {
   description   = "VCN's CIDR IP Block"
   default       = "10.0.0.0/16"
 }
