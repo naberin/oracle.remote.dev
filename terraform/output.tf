@@ -1,5 +1,5 @@
 # output Reserved Public IP
-output "jenkins_public_ip" {
+output "workvm_public_ip" {
   value = "http://${oci_core_public_ip.compute_public_ip.ip_address}"
 }
 
