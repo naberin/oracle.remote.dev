@@ -1,9 +1,9 @@
 title: "Work VM"
 description: "Provisions a development environment"
 stackDescription: "Work Environment"
-informationalText: "Work Environment"
-schemaVersion: 1.0.1
-version: "20220215"
+informationalText: "Work Environment Terraform Scripts with cloud-init"
+schemaVersion: 1.0.2
+version: "20220217"
 locale: "en"
 
 variableGroups:
