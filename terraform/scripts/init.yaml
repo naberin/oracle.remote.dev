@@ -31,7 +31,8 @@ runcmd:
   - [ touch, /tmp/cloud-init-complete ]
   - [ systemctl, start, httpd ]
   - [ systemctl, enable, httpd.service ]
-  - [ firewall-cmd, --add-service=http, --permanent ]
-  - [ firewall-cmd, --zone=public, --permanent, --add-port=5000/tcp ]
-  - [ firewall-cmd, --zone=public, --permanent, --add-port=80/tcp ]
+  - firewall-offline-cmd --zone=public --add-port=5000/tcp
+  - firewall-offline-cmd --zone=public --add-port=80/tcp
+  - [ systemctl, enable, firewalld ]
+  - [ systemctl, start, firewalld ]
   - [ firewall-cmd, --reload ]
