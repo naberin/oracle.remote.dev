@@ -1,7 +1,7 @@
 # Provisioning with Oracle Resource Manager (ORM)
 To provision a work VM via ORM, console access and policies to create Networks and a Compute VM are _required_. The following link will allow you to directly import this project to ORM.
 
-[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/naberin/oracle.remote.dev/releases/download/v1.0.1/terraform.zip)
+[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/naberin/oracle.remote.dev/releases/download/v1.0.2/terraform.zip)
 
 If you click the option above to `Deploy to Oracle Cloud`, skip to [Step 3 of Create a New Stack](#create-a-new-stack).
 
