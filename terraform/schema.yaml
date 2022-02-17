@@ -6,10 +6,12 @@ schemaVersion: 1.0.1
 version: "20220215"
 locale: "en"
 
+variableGroups:
 - title: "Required Configuration"
   visible: true
   variables:
   - compartment_id
+  - region
 
 variables:
   compartment_id:
